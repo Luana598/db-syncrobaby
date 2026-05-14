@@ -69,3 +69,96 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE sp_update_stock (
+    IN p_id_stock_registry INT,
+    IN p_quantity_used INT
+)
+BEGIN
+
+    DECLARE current_quantity INT;
+
+    SELECT quantity INTO current_quantity
+    FROM tbl_stock_registry WHERE id_stock_registry = p_id_stock_registry;
+
+    IF current_quantity > p_quantity_used THEN
+
+        UPDATE tbl_stock_registry
+        SET quantity = quantity - p_quantity_used
+        WHERE id_stock_registry = p_id_stock_registry;
+
+    ELSE
+
+        UPDATE tbl_stock_registry
+        SET quantity = 0
+        WHERE id_stock_registry = p_id_stock_registry;
+
+    END IF;
+
+END $$
+
+DELIMITER ;
+
+-- triggers pra cada tbl
+
+DELIMITER $$
+
+CREATE TRIGGER trg_delete_stock_feeding
+AFTER INSERT ON tbl_stock_feeding
+FOR EACH ROW
+BEGIN
+
+   CALL sp_update_stock(
+   NEW.fk_id_stock_registry,
+   NEW.quantity
+   );
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER trg_delete_stock_bath
+AFTER INSERT ON tbl_stock_bath
+FOR EACH ROW
+BEGIN
+
+   CALL sp_update_stock(
+   NEW.fk_id_stock_registry,
+   NEW.quantity
+   );
+
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER trg_delete_stock_diaper
+AFTER INSERT ON tbl_stock_diaper
+FOR EACH ROW
+BEGIN
+
+   CALL sp_update_stock(
+   NEW.fk_id_stock_registry,
+   NEW.quantity
+   );
+
+END $$
+DELIMITER ; 
+
+DELIMITER $$
+CREATE TRIGGER trg_delete_stock_medication
+AFTER INSERT ON tbl_stock_medication
+FOR EACH ROW
+BEGIN
+
+   CALL sp_update_stock(
+   NEW.fk_id_stock_registry,
+   NEW.dosage
+   );
+
+END $$
+DELIMITER ;

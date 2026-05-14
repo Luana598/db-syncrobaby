@@ -49,79 +49,6 @@ INSERT INTO tbl_notification (title, message, date_time, fk_id_child, fk_id_guar
 ('Alerta de estoque', 'As fraldas do Bento estão esgotando', '2024-05-10 10:30:00', 2, 2, 2),
 ('Feliz aniversário!', 'Clara faz aniversário hoje!', '2024-05-10 12:00:00', 3, 3, 3);
 
-
-INSERT INTO tbl_vaccine (vaccine_name, observation, prevented_diseases, dose) VALUES
--- Ao nascer
-('Vacina BCG', NULL, 'Formas graves e disseminadas da tuberculose e, também, com efeito protetor contra a hanseníase', 'dose única'),
-('Vacina Hepatite B', NULL, 'Hepatite B e hepatite D', '1 dose'),
-
--- 2 meses
-('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '1ª dose'),
-('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '1ª dose'),
-('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorotipos contidos na vacina', '1ª dose'),
-('Vacina rotavírus humano', 'Atenção aos prazos para esta vacinação, a 1ª dose deve ser aplicada entre 1 mês e 15 dias e 11 meses e 29 dias. A 2ª dose, entre 3 meses e 15 dias e 23 meses e 29 dias. Se a 1ª dose não for feita no período indicado, a criança perderá a oportunidade da 2ª dose.', 'Gastrenterite viral (diarreia e vômitos)', '1ª dose'),
-
--- 3 meses
-('Vacina meningocócica C', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) pelo meningococo tipo C', '1ª dose'),
-
--- 4 meses
-('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '2ª dose'),
-('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '2ª dose'),
-('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorotipos contidos na vacina', '2ª dose'),
-('Vacina rotavírus humano', 'Obs.: Atenção aos prazos para esta vacinação, a 1ª dose deve ser aplicada entre 1 mês e 15 dias e 11 meses e 29 dias. A 2ª dose, entre 3 meses e 15 dias e 23 meses e 29 dias. Se a 1ª dose não for feita no período indicado, a criança perderá a oportunidade da 2ª dose.', 'Gastrenterite viral (diarreia e vômitos)', '2ª dose'),
-
--- 5 meses
-('Vacina meningocócica C', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) pelo meningococo tipo C', '2ª dose'),
-
--- 6 meses
-('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '3ª dose'),
-('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '3ª dose'),
-('Vacina influenza trivalente', 'Obs.: Crianças de 6 meses a menores de 6 anos devem ser vacinadas todo ano. Quem vai receber a vacina pela primeira vez deve tomar 2 doses com 30 dias de intervalo. As que já tomaram em anos anteriores recebem apenas 1 dose por ano.', 'Gripe (influenza)', '1ª dose'),
-('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '1ª dose'),
-
--- 6 a 8 meses
-('Vacina febre amarela', 'Obs.: A vacina contra febre amarela pode ser recomendada para esta idade quando há alto risco de contrair a doença e não é possível adiar a vacinação. Isso vale para quem vive ou vai viajar para áreas com transmissão ativa, sempre após avaliação do serviço de saúde. Para viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem', 'Febre amarela e suas complicações', '1 dose'),
-
--- 7 meses
-('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '2ª dose'),
-
--- 9 meses
-('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '3ª dose'),
-('Vacina febre amarela', 'Obs.: Manter a situação vacinal atualizada, principalmente para os residentes e viajantes para área com transmissão ativa da doença. Para os viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem.', 'Febre amarela e suas complicações', '1ª dose'),
-
--- 12 meses
-('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorogrupos contidos na vacina', '1 dose reforço'),
-('Vacina meningocócica ACWY', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) por meningococos do tipo A, C, W e Y', '1 dose'),
-('Vacina tríplice viral SCR', NULL, 'Sarampo, caxumba, rubéola e síndrome da rubéola congênita (futuramente, na gravidez)', '1 dose'),
-
--- 15 meses
-('Vacina DTP', NULL, 'Difteria, tétano e coqueluche', '1ª dose reforço'),
-('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '1ª dose reforço'),
-('Vacina tríplice viral SCR', 'Obs.: Em casos de indisponibilidade da vacina varicela monovalente, a vacina tetraviral poderá ser utilizada.', 'Sarampo, caxumba, rubéola, síndrome da rubéola congênita (futuramente, na gravidez)', '2ª dose'),
-('Vacina Varicela', 'Obs.: Em casos de indisponibilidade da vacina varicela monovalente, a vacina tetraviral poderá ser utilizada.', 'Varicela (catapora)', '1ª dose'),
-('Vacina hepatite A', NULL, 'Hepatite A', '1ª dose'),
-
--- 4 anos
-('Vacina DTP', 'Obs.: Recomenda-se, em sequência, manter 1 dose de reforço com dT a cada 10 anos após a última dose DTP, antecipando para 5 anos em caso de exposição ao risco de tétano ou difteria.', 'Difteria, tétano, coqueluche', '2º reforço'),
-('Vacina febre amarela', 'Obs.: Manter a situação vacinal atualizada, principalmente para os residentes e viajantes para área com transmissão ativa da doença. Para os viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem.', 'Febre amarela', '1 dose reforço'),
-('Vacina varicela', NULL, 'Varicela (catapora)', '1 dose'),
-
--- 5 anos
-('Vacina pneumocócica 23-valente', 'Obs.: Sem histórico vacinal com pneumo conjugada. Uma segunda dose deve ser administrada com intervalo de 5 anos após a 1ª dose.', 'Doenças pneumocócicas invasivas pelos sorogrupos contidos na vacina', '1 dose');
-
-INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
-('Recém nascido', 0, 1), 
-('Bebê - 1º Semestre', 2, 6),
-('Bebê - 2º Semestre', 7, 12),
-('Primeira Infância - Fase 1', 13, 24),
-('Primeira Infância - Fase 2', 25, 36),
-('Pré-Escolar', 37, 72);
-
-INSERT INTO tbl_article (title, content, publication_date, author, source_link) VALUES 
-('Importância da Amamentação', 'Conteúdo sobre amamentação...', '2023-10-01', 'Dr. Paulo Neto', 'http://site.com/artigo1'),
-('Introdução Alimentar', 'Passo a passo da introdução...', '2023-11-15', 'Nutri Julia', 'http://site.com/artigo2'),
-('Sono do Bebê', 'Dicas para uma noite tranquila...', '2024-01-20', 'Dra. Luana', 'http://site.com/artigo3');
-
 INSERT INTO tbl_unit (unit_initials) VALUES     
 ('l'), 
 ('ml'),
@@ -139,10 +66,8 @@ INSERT INTO tbl_product_type (product_type_name) VALUES
 
 INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 
--- =====================================================
 -- HIGIENE E CUIDADOS
 -- Tipo: Higiene (4)
--- =====================================================
 
 ('Fralda descartável', 5, 4), -- un
 ('Lenço umedecido', 5, 4), -- un
@@ -163,10 +88,8 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Sabonete em barra', 3, 4), -- g
 ('Detergente para mamadeiras', 2, 4), -- ml
 
--- =====================================================
 -- SAÚDE
 -- Tipo: Saúde (6)
--- =====================================================
 
 ('Paracetamol infantil', 2, 6), -- ml
 ('Ibuprofeno infantil', 2, 6), -- ml
@@ -190,10 +113,8 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Esparadrapo', 5, 6), -- un
 ('Termômetro digital', 5, 6), -- un
 
--- =====================================================
 -- ACESSÓRIOS
 -- Tipo: Acessórios (5)
--- =====================================================
 
 ('Chupeta', 5, 5), -- un
 ('Mamadeira', 5, 5), -- un
@@ -209,10 +130,8 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Tesoura de unha infantil', 5, 5), -- un
 ('Escova de cabelo infantil', 5, 5), -- un
 
--- =====================================================
 -- ALIMENTAÇÃO (ALIMENTO SÓLIDO)
 -- Tipo: Alimentação (Alimento sólido) (1)
--- =====================================================
 
 ('Abacate', 3, 1), -- g
 ('Banana', 3, 1),
@@ -285,10 +204,8 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Biscoito', 3, 1),
 ('Mel', 3, 1),
 
--- =====================================================
 -- ALIMENTAÇÃO (LEITE E DERIVADOS)
 -- Tipo: Alimentação (Leite e derivados) (2)
--- =====================================================
 
 ('Fórmula infantil etapa 1', 3, 2), -- g
 ('Fórmula infantil etapa 2', 3, 2),
@@ -297,10 +214,8 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Iogurte', 2, 2), -- ml
 ('Queijo', 3, 2), -- g
 
--- =====================================================
 -- ALIMENTAÇÃO (Papinha ou purê)
 -- Tipo: Papinha ou purê (3)
--- =====================================================
 
 ('Papinha infantil', 3, 3), -- g
 ('Purê infantil', 3, 3); -- g
@@ -315,8 +230,6 @@ INSERT INTO tbl_stock_registry (description, quantity, volume, fk_id_child, fk_i
 ('Medicamento para febre', 1, 100, 2, 19),
 ('Bananas maduras para alimentação', 6, 1200, 1, 53),
 ('Mamadeira reserva', 2, 250, 3, 40),
-
--- Fórmula infantil etapa 2 (id 94)
 ('Lata aberta em uso', 1, 800, 2, 94);
 
 INSERT INTO tbl_diary_note (title, content, date, color, fk_id_child) VALUES 
@@ -349,25 +262,94 @@ INSERT INTO tbl_feeding_log (date_time, description, fk_id_child, fk_id_product_
 ('2024-05-10 12:30:00', 'Papinha de legumes com frango.', 2, 3),
 ('2024-05-10 15:00:00', 'Fórmula infantil - 150ml.', 3, 2);
 
+
 INSERT INTO tbl_stock_feeding 
 (fk_id_feeding, fk_id_stock_registry, quantity) 
 VALUES 
-(3, 8, 150);
+(3, 8, 1);
 
 INSERT INTO tbl_stock_bath 
 (fk_id_bath, fk_id_stock_registry, quantity) 
 VALUES 
-(1, 4, 20);
+(1, 4, 1);
 
 INSERT INTO tbl_stock_medication 
 (fk_id_medication, fk_id_stock_registry, dosage) 
 VALUES 
-(1, 5, 5);
+(1, 5, 1);
 
 INSERT INTO tbl_stock_diaper 
 (fk_id_diaper, fk_id_stock_registry, quantity) 
 VALUES 
 (1, 1, 1);
+
+INSERT INTO tbl_vaccine (vaccine_name, observation, prevented_diseases, dose) VALUES
+-- Ao nascer
+('Vacina BCG', NULL, 'Formas graves e disseminadas da tuberculose e, também, com efeito protetor contra a hanseníase', 'dose única'),
+('Vacina Hepatite B', NULL, 'Hepatite B e hepatite D', '1 dose'),
+
+-- 2 meses
+('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '1ª dose'),
+('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '1ª dose'),
+('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorotipos contidos na vacina', '1ª dose'),
+('Vacina rotavírus humano', 'Atenção aos prazos para esta vacinação, a 1ª dose deve ser aplicada entre 1 mês e 15 dias e 11 meses e 29 dias. A 2ª dose, entre 3 meses e 15 dias e 23 meses e 29 dias. Se a 1ª dose não for feita no período indicado, a criança perderá a oportunidade da 2ª dose.', 'Gastrenterite viral (diarreia e vômitos)', '1ª dose'),
+
+-- 3 meses
+('Vacina meningocócica C', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) pelo meningococo tipo C', '1ª dose'),
+
+-- 4 meses
+('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '2ª dose'),
+('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '2ª dose'),
+('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorotipos contidos na vacina', '2ª dose'),
+('Vacina rotavírus humano', 'Obs.: Atenção aos prazos para esta vacinação, a 1ª dose deve ser aplicada entre 1 mês e 15 dias e 11 meses e 29 dias. A 2ª dose, entre 3 meses e 15 dias e 23 meses e 29 dias. Se a 1ª dose não for feita no período indicado, a criança perderá a oportunidade da 2ª dose.', 'Gastrenterite viral (diarreia e vômitos)', '2ª dose'),
+
+-- 5 meses
+('Vacina meningocócica C', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) pelo meningococo tipo C', '2ª dose'),
+
+-- 6 meses
+('Vacina penta (DTP+Hib+HB)', NULL, 'Difteria, tétano, coqueluche, infecções causadas por Haemophilus influenzae B e hepatite B', '3ª dose'),
+('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '3ª dose'),
+('Vacina influenza trivalente', 'Obs.: Crianças de 6 meses a menores de 6 anos devem ser vacinadas todo ano. Quem vai receber a vacina pela primeira vez deve tomar 2 doses com 30 dias de intervalo. As que já tomaram em anos anteriores recebem apenas 1 dose por ano.', 'Gripe (influenza)', '1ª dose'),
+('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '1ª dose'),
+
+-- 6 a 8 meses
+('Vacina febre amarela', 'Obs.: A vacina contra febre amarela pode ser recomendada para esta idade quando há alto risco de contrair a doença e não é possível adiar a vacinação. Isso vale para quem vive ou vai viajar para áreas com transmissão ativa, sempre após avaliação do serviço de saúde. Para viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem', 'Febre amarela e suas complicações', '1 dose'),
+
+-- 7 meses
+('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '2ª dose'),
+
+-- 9 meses
+('Vacina covid-19', 'Obs.: O esquema pode ser de 2 doses (6 e 7 meses, vacina Spikevax) ou 3 doses (6, 7 e 9 meses, vacina Comirnaty). Para crianças imunocomprometidas, 3 doses, com reforço a cada 6 meses até os 4 anos.', 'Formas graves e óbitos causados pelo vírus SARS-CoV-2', '3ª dose'),
+('Vacina febre amarela', 'Obs.: Manter a situação vacinal atualizada, principalmente para os residentes e viajantes para área com transmissão ativa da doença. Para os viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem.', 'Febre amarela e suas complicações', '1ª dose'),
+
+-- 12 meses
+('Vacina pneumocócica 10-valente', NULL, 'Doenças pneumocócicas invasivas pelos sorogrupos contidos na vacina', '1 dose reforço'),
+('Vacina meningocócica ACWY', NULL, 'Doenças meningocócicas (meningite, encefalite, meningoencefalite) por meningococos do tipo A, C, W e Y', '1 dose'),
+('Vacina tríplice viral SCR', NULL, 'Sarampo, caxumba, rubéola e síndrome da rubéola congênita (futuramente, na gravidez)', '1 dose'),
+
+-- 15 meses
+('Vacina DTP', NULL, 'Difteria, tétano e coqueluche', '1ª dose reforço'),
+('Vacina poliomielite inativada VIP', NULL, 'Poliomielite (paralisia infantil)', '1ª dose reforço'),
+('Vacina tríplice viral SCR', 'Obs.: Em casos de indisponibilidade da vacina varicela monovalente, a vacina tetraviral poderá ser utilizada.', 'Sarampo, caxumba, rubéola, síndrome da rubéola congênita (futuramente, na gravidez)', '2ª dose'),
+('Vacina Varicela', 'Obs.: Em casos de indisponibilidade da vacina varicela monovalente, a vacina tetraviral poderá ser utilizada.', 'Varicela (catapora)', '1ª dose'),
+('Vacina hepatite A', NULL, 'Hepatite A', '1ª dose'),
+
+-- 4 anos
+('Vacina DTP', 'Obs.: Recomenda-se, em sequência, manter 1 dose de reforço com dT a cada 10 anos após a última dose DTP, antecipando para 5 anos em caso de exposição ao risco de tétano ou difteria.', 'Difteria, tétano, coqueluche', '2º reforço'),
+('Vacina febre amarela', 'Obs.: Manter a situação vacinal atualizada, principalmente para os residentes e viajantes para área com transmissão ativa da doença. Para os viajantes, a vacina deve ser tomada pelo menos 10 dias antes da viagem.', 'Febre amarela', '1 dose reforço'),
+('Vacina varicela', NULL, 'Varicela (catapora)', '1 dose'),
+
+-- 5 anos
+('Vacina pneumocócica 23-valente', 'Obs.: Sem histórico vacinal com pneumo conjugada. Uma segunda dose deve ser administrada com intervalo de 5 anos após a 1ª dose.', 'Doenças pneumocócicas invasivas pelos sorogrupos contidos na vacina', '1 dose');
+
+
+INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
+('Recém nascido', 0, 1), 
+('Bebê - 1º Semestre', 2, 6),
+('Bebê - 2º Semestre', 7, 12),
+('Primeira Infância - Fase 1', 13, 24),
+('Primeira Infância - Fase 2', 25, 36),
+('Pré-Escolar', 37, 72);
 
 -- VACCINE IN AGE GROUP
 INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
@@ -423,11 +405,6 @@ INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 (6, 31), -- Varicela reforço
 (6, 32); -- Pneumocócica 23-valente
 
--- ARTICLE IN AGE GROUP
-INSERT INTO tbl_article_in_age_group (fk_id_age_group, fk_id_article) VALUES 
-(1, 1), 
-(2, 2), 
-(2, 3);
 
 -- CHILD VACCINE 
 INSERT INTO tbl_child_vaccine (fk_id_child, fk_id_vaccine, application_status, application_date) VALUES 
@@ -435,8 +412,3 @@ INSERT INTO tbl_child_vaccine (fk_id_child, fk_id_vaccine, application_status, a
 (2, 1, TRUE, '2023-01-16'),
 (3, 1, FALSE, NULL);
 
--- CHILD ARTICLE 
-INSERT INTO tbl_child_article (fk_id_article, fk_id_child) VALUES 
-(1, 1),
-(2, 2),
-(3, 2);

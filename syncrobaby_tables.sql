@@ -2,9 +2,6 @@ CREATE DATABASE db_syncrobaby;
  -- DROP DATABASE db_syncrobaby;
 USE db_syncrobaby;
 
--- TABLE CREATION SCRIPT -- 
-
--- GUARDIAN / PARENT --
 
 CREATE TABLE tbl_guardian (
     id_guardian INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +12,6 @@ CREATE TABLE tbl_guardian (
     active BOOLEAN DEFAULT TRUE
 );
 
--- CHILD --
 
 CREATE TABLE tbl_child (
     id_child INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,14 +32,11 @@ ALTER TABLE tbl_child ADD CONSTRAINT FK_child_guardian
     REFERENCES tbl_guardian (id_guardian)
     ON DELETE CASCADE;
     
--- NOTIFICATION TYPE --
-    
 CREATE TABLE tbl_notification_type (
     id_notification_type INT AUTO_INCREMENT PRIMARY KEY,
     notification_type_name VARCHAR(50) NOT NULL
 );
 
--- NOTIFICATION --
 
 CREATE TABLE tbl_notification (
     id_notification INT AUTO_INCREMENT PRIMARY KEY,
@@ -69,15 +62,11 @@ ALTER TABLE tbl_notification ADD CONSTRAINT FK_notification_type
     FOREIGN KEY (fk_id_notification_type)
     REFERENCES tbl_notification_type (id_notification_type)
     ON DELETE CASCADE;
-    
--- SPECIALIZATION --
 
 CREATE TABLE tbl_specialization (
     id_specialization INT AUTO_INCREMENT PRIMARY KEY,
     specialization_name VARCHAR(50) NOT NULL
 );
-
--- PROFESSIONAL --
 
 CREATE TABLE tbl_professional (
     id_professional INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,8 +87,6 @@ ALTER TABLE tbl_professional ADD CONSTRAINT FK_professional_specialization
     FOREIGN KEY (fk_id_specialization)
     REFERENCES tbl_specialization (id_specialization)
     ON DELETE CASCADE;
-    
--- MEASUREMENT HISTORY --    
 
 CREATE TABLE tbl_measurement_history (
     id_history INT AUTO_INCREMENT PRIMARY KEY,
@@ -116,8 +103,6 @@ ALTER TABLE tbl_measurement_history ADD CONSTRAINT FK_measurement_history_child
     FOREIGN KEY (fk_id_child)
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE;
-    
--- ILLNESS --
 
 CREATE TABLE tbl_illness (
     id_illness INT AUTO_INCREMENT PRIMARY KEY,
@@ -134,8 +119,6 @@ ALTER TABLE tbl_illness ADD CONSTRAINT FK_illness_child
     FOREIGN KEY (fk_id_child)
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE;
- 
--- VACCINE --
 
 CREATE TABLE tbl_vaccine (
     id_vaccine INT AUTO_INCREMENT PRIMARY KEY,
@@ -145,8 +128,6 @@ CREATE TABLE tbl_vaccine (
     dose VARCHAR(20)
 );
 
--- AGE GROUP --
-
 CREATE TABLE tbl_age_group (
     id_age_group INT AUTO_INCREMENT PRIMARY KEY,
     age_group_name VARCHAR(50) NOT NULL,
@@ -154,33 +135,26 @@ CREATE TABLE tbl_age_group (
     max_months INT NOT NULL
 );
 
--- ARTICLE --
-
 CREATE TABLE tbl_article (
     id_article INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     content TEXT NOT NULL,
-    publication_date DATE NOT NULL,
+    publication_date DATE,
     author VARCHAR(150) NOT NULL,
     media VARCHAR(255),
-    source_link VARCHAR(255) NOT NULL
+    source_link VARCHAR(255) NOT NULL, 
+    description VARCHAR(300)
 );
-
--- MEASUREMENT UNIT --
 
 CREATE TABLE tbl_unit (
     id_unit INT  AUTO_INCREMENT PRIMARY KEY,
     unit_initials VARCHAR(5) NOT NULL
 );
 
--- PRODUCT TYPE --
-
 CREATE TABLE tbl_product_type (
     id_product_type INT AUTO_INCREMENT PRIMARY KEY,
     product_type_name VARCHAR(150)
 );
-
--- PRODUCT -- 
 
 CREATE TABLE tbl_product (
     id_product INT AUTO_INCREMENT PRIMARY KEY,
@@ -198,9 +172,6 @@ ALTER TABLE tbl_product ADD CONSTRAINT FK_product_product_type
     FOREIGN KEY (fk_id_product_type)
     REFERENCES tbl_product_type (id_product_type)
     ON DELETE CASCADE;
-    
-    
--- STOCK REGISTRY -- 
 
 CREATE TABLE tbl_stock_registry (
     id_stock_registry INT AUTO_INCREMENT PRIMARY KEY,
@@ -220,9 +191,7 @@ ALTER TABLE tbl_stock_registry ADD CONSTRAINT FK_stock_registry_product
     FOREIGN KEY (fk_id_product)
     REFERENCES tbl_product (id_product)
     ON DELETE CASCADE;
-    
--- DIARY NOTES --
-
+ 
 CREATE TABLE tbl_diary_note (
     id_diary_note INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
@@ -237,8 +206,6 @@ ALTER TABLE tbl_diary_note ADD CONSTRAINT FK_diary_note_child
     FOREIGN KEY (fk_id_child)
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE;
-    
--- SLEEP LOG --
 
 CREATE TABLE tbl_sleep_log (
     id_sleep INT AUTO_INCREMENT PRIMARY KEY,
@@ -254,9 +221,6 @@ ALTER TABLE tbl_sleep_log ADD CONSTRAINT FK_sleep_log_child
     FOREIGN KEY (fk_id_child)
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE;
-    
-    
--- DIAPER CHANGE LOG --
 
 CREATE TABLE tbl_diaper_log (
     id_diaper INT AUTO_INCREMENT PRIMARY KEY,
@@ -271,8 +235,6 @@ ALTER TABLE tbl_diaper_log ADD CONSTRAINT FK_diaper_log_child
     FOREIGN KEY (fk_id_child)
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE; 
-    
--- MEDICATION LOG --
 
 CREATE TABLE tbl_medication_log (
     id_medication INT AUTO_INCREMENT PRIMARY KEY,
@@ -287,8 +249,6 @@ ALTER TABLE tbl_medication_log ADD CONSTRAINT FK_medication_log_child
     REFERENCES tbl_child (id_child)
     ON DELETE CASCADE;
     
--- FEEDING LOG --
-
 CREATE TABLE tbl_feeding_log (
     id_feeding INT AUTO_INCREMENT PRIMARY KEY,
     date_time DATETIME NOT NULL,
@@ -308,8 +268,6 @@ ALTER TABLE tbl_feeding_log ADD CONSTRAINT FK_feeding_log_type
     REFERENCES tbl_product_type (id_product_type)
     ON DELETE CASCADE;
     
--- BATH LOG --
-    
 CREATE TABLE tbl_bath_log (
     id_bath INT AUTO_INCREMENT PRIMARY KEY,
     start_time DATETIME NOT NULL,
@@ -326,8 +284,6 @@ ALTER TABLE tbl_bath_log ADD CONSTRAINT FK_bath_log_child
     ON DELETE CASCADE;
     
 -- RELATIONSHIP TABLES --
-   
--- RELATION -> STOCK PRODUCTS IN FEEDING LOG --
 
 CREATE TABLE tbl_stock_feeding (
     fk_id_feeding INT,

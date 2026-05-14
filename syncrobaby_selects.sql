@@ -95,10 +95,5 @@ SELECT
     b.id_bath AS id
  FROM tbl_bath_log b
  ORDER BY date ASC, time ASC;
- 
-SELECT * FROM vw_routine_timeline WHERE date = '2024-05-10' AND child = 1 ;
 
---  -- Exemplo de data
-
-select * from tbl_child where fk_id_guardian =  1;
 
