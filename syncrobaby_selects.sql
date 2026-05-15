@@ -111,3 +111,21 @@ INNER JOIN tbl_unit u
     
     select * from vw_product_info where id = 1;
 
+-- VIEW de registro em estoque por tipo de produto
+ CREATE VIEW vw_stock_type AS
+
+SELECT sr.id_stock_registry as id,
+p.product_name,
+sr.description,
+pt.product_type_name as type,
+sr.quantity,
+sr.volume,
+sr.fk_id_child as id_child,
+sr.fk_id_product as id_product, 
+p.fk_id_product_type
+FROM tbl_stock_registry sr
+INNER JOIN tbl_product p
+ON sr.fk_id_product = p.id_product
+INNER JOIN tbl_product_type pt
+ON p.fk_id_product_type = pt.id_product_type;
+
