@@ -70,6 +70,8 @@ END $$
 
 DELIMITER ;
 
+-- procedure de decremento da quantidade em estoque
+
 DELIMITER $$
 
 CREATE PROCEDURE sp_update_stock (

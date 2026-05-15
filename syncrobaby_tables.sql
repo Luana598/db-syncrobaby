@@ -1,5 +1,5 @@
 CREATE DATABASE db_syncrobaby;
- -- DROP DATABASE db_syncrobaby;
+  -- DROP DATABASE db_syncrobaby;
 USE db_syncrobaby;
 
 
@@ -42,7 +42,8 @@ CREATE TABLE tbl_notification (
     id_notification INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     message VARCHAR(255) NOT NULL,
-    date_time DATETIME,
+    date_time DATETIME DEFAULT (CURDATE()),
+    read_status BOOLEAN DEFAULT FALSE,
     fk_id_child INT,
     fk_id_guardian INT,
     fk_id_notification_type INT

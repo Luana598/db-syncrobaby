@@ -24,7 +24,7 @@ INNER JOIN tbl_child c
     
     SELECT * FROM vw_vaccination_status WHERE application_status = 1;
 
--- 2. SELECT Feeding Log for Daily Routine
+-- 2. VIEW para linha temporal do dia - rotinas
 
 
 CREATE VIEW vw_routine_timeline AS
@@ -55,7 +55,6 @@ UNION ALL
     FROM tbl_sleep_log s
 
 UNION ALL
--- 4. SELECT Diaper Change Log for Daily Routine
 
 SELECT 
 	d.fk_id_child AS child,
@@ -69,7 +68,6 @@ SELECT
 FROM tbl_diaper_log d
 
 UNION ALL
--- 5. SELECT Medication Log for Daily Routine
 
 SELECT 
 	m.fk_id_child AS child,
@@ -83,7 +81,7 @@ SELECT
     FROM tbl_medication_log m
 
 UNION ALL
--- 3. SELECT Bath Log for Daily Routine
+
 SELECT 
 	b.fk_id_child AS child,
     TIME(b.start_time) AS time, 
@@ -95,5 +93,21 @@ SELECT
     b.id_bath AS id
  FROM tbl_bath_log b
  ORDER BY date ASC, time ASC;
-
+ 
+ -- VIEW de produto com tipo e grandeza
+ CREATE VIEW  vw_product_info AS
+ 
+ SELECT p.id_product as id, 
+ p.product_name as name, 
+ p.fk_id_product_type as id_type,
+ pt.product_type_name as type, 
+  p.fk_id_unit as id_unity,
+ u.unit_initials as unit
+ FROM tbl_product p
+INNER JOIN tbl_product_type pt
+    ON pt.id_product_type = p.fk_id_product_type
+INNER JOIN tbl_unit u
+    ON u.id_unit = p.fk_id_unit;
+    
+    select * from vw_product_info where id = 1;
 
