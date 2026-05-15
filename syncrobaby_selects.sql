@@ -129,3 +129,19 @@ ON sr.fk_id_product = p.id_product
 INNER JOIN tbl_product_type pt
 ON p.fk_id_product_type = pt.id_product_type;
 
+-- VIEW de notificacao com tipo
+ CREATE VIEW vw_notification_type AS
+
+SELECT n.title, 
+n.message,
+n.date_time, 
+n.fk_id_child, 
+n.fk_id_guardian, 
+n.fk_id_notification_type,
+nt.notification_type_name
+FROM tbl_notification n 
+INNER JOIN tbl_notification_type nt
+ON n.fk_id_notification_type = nt.id_notification_type;
+
+SELECT * FROM vw_notification_type;
+

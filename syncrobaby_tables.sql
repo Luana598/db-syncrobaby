@@ -96,7 +96,7 @@ CREATE TABLE tbl_measurement_history (
     bmi DECIMAL(4,2),
     head_circumference DECIMAL(5,2),
     description VARCHAR(255),
-    update_date DATE NOT NULL,
+    update_date DATE NOT NULL DEFAULT (CURDATE()),
     fk_id_child INT
 );
  
