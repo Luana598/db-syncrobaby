@@ -4,6 +4,7 @@ USE db_syncrobaby;
 
 CREATE VIEW vw_vaccination_status AS
 SELECT 
+	v.id_vaccine,
     v.vaccine_name AS vaccine,
     v.observation AS observation,
     v.prevented_diseases AS prevented_diseases,
@@ -22,7 +23,9 @@ INNER JOIN tbl_child_vaccine cv
 INNER JOIN tbl_child c
     ON cv.fk_id_child = c.id_child;
     
-    SELECT * FROM vw_vaccination_status WHERE application_status = 1;
+    SELECT * FROM vw_vaccination_status where id_age_group = 2 and id_child = 6;
+    
+    select * from tbl_child_vaccine;
 
 -- 2. VIEW para linha temporal do dia - rotinas
 
@@ -128,6 +131,8 @@ INNER JOIN tbl_product p
 ON sr.fk_id_product = p.id_product
 INNER JOIN tbl_product_type pt
 ON p.fk_id_product_type = pt.id_product_type;
+
+select * from vw_stock_type;
 
 -- VIEW de notificacao com tipo
  CREATE VIEW vw_notification_type AS

@@ -396,7 +396,7 @@ CREATE TABLE tbl_child_vaccine (
     fk_id_child INT,
     fk_id_vaccine INT,
     application_status BOOLEAN DEFAULT FALSE,
-    application_date DATE
+    application_date DATE 
 );
  
 ALTER TABLE tbl_child_vaccine ADD CONSTRAINT FK_child_vaccine_1
