@@ -405,10 +405,3 @@ INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 (6, 31), -- Varicela reforço
 (6, 32); -- Pneumocócica 23-valente
 
-
--- CHILD VACCINE 
-INSERT INTO tbl_child_vaccine (fk_id_child, fk_id_vaccine, application_status, application_date) VALUES 
-(1, 1, TRUE, '2023-05-11'),
-(2, 1, TRUE, '2023-01-16'),
-(3, 1, FALSE, NULL);
-

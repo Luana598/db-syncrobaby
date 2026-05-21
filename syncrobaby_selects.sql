@@ -4,28 +4,34 @@ USE db_syncrobaby;
 
 CREATE VIEW vw_vaccination_status AS
 SELECT 
-	v.id_vaccine,
+    v.id_vaccine,
     v.vaccine_name AS vaccine,
-    v.observation AS observation,
-    v.prevented_diseases AS prevented_diseases,
+    v.observation,
+    v.prevented_diseases,
+    v.dose,
     ag.id_age_group,
     ag.age_group_name,
     cv.application_status,
     cv.application_date,
     c.id_child
+
 FROM tbl_vaccine v
+
 INNER JOIN tbl_vaccine_in_age_group vag
     ON v.id_vaccine = vag.fk_id_vaccine
+
 INNER JOIN tbl_age_group ag
     ON vag.fk_id_age_group = ag.id_age_group
-INNER JOIN tbl_child_vaccine cv
+
+LEFT JOIN tbl_child_vaccine cv
     ON v.id_vaccine = cv.fk_id_vaccine
-INNER JOIN tbl_child c
+
+LEFT JOIN tbl_child c
     ON cv.fk_id_child = c.id_child;
     
-    SELECT * FROM vw_vaccination_status where id_age_group = 2 and id_child = 6;
     
-    select * from tbl_child_vaccine;
+    SELECT * FROM vw_vaccination_status where id_age_group = 2 and id_child = 4;
+    
 
 -- 2. VIEW para linha temporal do dia - rotinas
 
@@ -150,3 +156,23 @@ ON n.fk_id_notification_type = nt.id_notification_type;
 
 SELECT * FROM vw_notification_type;
 
+-- VIEW de artigo com faixa etária
+
+CREATE VIEW vw_article_by_age_group AS
+
+SELECT a.id_article, 
+a.title,
+a.content,
+a.publication_date,
+a.author,
+a.media,
+a.source_link,
+a.description,
+aag.fk_id_age_group,
+ag.age_group_name
+FROM tbl_article a
+INNER JOIN tbl_article_in_age_group aag
+ON a.id_article = aag.fk_id_article
+
+INNER JOIN tbl_age_group ag
+    ON aag.fk_id_age_group = ag.id_age_group;

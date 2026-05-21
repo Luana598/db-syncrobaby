@@ -1,5 +1,5 @@
 CREATE DATABASE db_syncrobaby;
-  -- DROP DATABASE db_syncrobaby;
+-- DROP DATABASE db_syncrobaby;
 USE db_syncrobaby;
 
 
@@ -178,7 +178,7 @@ CREATE TABLE tbl_stock_registry (
     id_stock_registry INT AUTO_INCREMENT PRIMARY KEY,
     description VARCHAR(500),
     quantity INT NOT NULL,
-    volume INT NOT NULL,
+    volume INT NULL,
     fk_id_child INT,
     fk_id_product INT
 );
