@@ -205,6 +205,7 @@ null,
  'https://hubconteudo.dasa.com.br/wp-content/uploads/2023/06/puerperio.jpg',
  'https://nav.dasa.com.br/blog/puerperio');
  
+ 
 -- ARTICLE IN AGE GROUP
 INSERT INTO tbl_article_in_age_group (fk_id_age_group, fk_id_article) VALUES
 	-- 1. Recém-nascido (Imediato) | 0-1 mês
@@ -219,37 +220,27 @@ INSERT INTO tbl_article_in_age_group (fk_id_age_group, fk_id_article) VALUES
 (1, 20), 
 (1, 21),
 (1, 22), 
-
 	-- 2. Bebê - 1º Semestre | 2-6 meses
-
 (2, 3),
 (2, 5),  
 (2, 6),  
 (2, 11),
-
 	-- 3. Bebê - 2º Semestre | 7-12 meses
-
 (3, 7), 
 (3, 8), 
 (3, 9), 
 (3, 10),
 (3, 11), 
-
 	-- 4. Primeira Infância - Fase 1 | 13-24 meses
-
 (4, 11), 
 (4, 12), 
 (4, 13),
-
 -- 5. Primeira Infância - Fase  |  25 - 36
-
 (5, 13),
 (5, 14), 
 (5, 15), 
 (5, 16),
-
 	-- 6. Pré-Escolar | 37-72 meses
-
 (6, 14), 
 (6, 16), 
 (6, 17), 

@@ -351,6 +351,20 @@ INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES
 ('Primeira Infância - Fase 2', 25, 36),
 ('Pré-Escolar', 37, 72);
 
+INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
+('2 meses', 2, 3),
+('3 meses', 3, 4),
+('4 meses', 4, 5),
+('5 meses', 5, 6),
+('6 meses', 6, 7),
+('6 a 8 meses', 6, 8),
+('7 meses', 7, 8),
+('9 meses', 9, 10), 
+('12 meses', 12, 14),
+('15 meses', 15, 16),
+('4 anos - 48 meses', 48, 49),
+('5 anos - 60 meses', 60, 61);
+
 -- VACCINE IN AGE GROUP
 INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 	-- 1. Recém-nascido (Imediato) | 0-1 mês
@@ -393,10 +407,10 @@ INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 	-- 4. Primeira Infância - Fase 1 | 13-24 meses
 
 (4, 24), -- DTP reforço
-(4, 25), -- VIP reforço
-(4, 26), -- Tríplice viral SCR 2ª dose
-(4, 27), -- Varicela
-(4, 28), -- Hepatite A
+(4, 25), 
+(4, 26),
+(4, 27), 
+(4, 28), 
 
 	-- 6. Pré-Escolar | 37-72 meses
 

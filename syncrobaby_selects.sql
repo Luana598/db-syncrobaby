@@ -30,7 +30,7 @@ LEFT JOIN tbl_child c
     ON cv.fk_id_child = c.id_child;
     
     
-    SELECT * FROM vw_vaccination_status where id_age_group = 2 and id_child = 4;
+    SELECT * FROM vw_vaccination_status where id_age_group = 3 and id_child = 4;
     
 
 -- 2. VIEW para linha temporal do dia - rotinas
@@ -176,3 +176,5 @@ ON a.id_article = aag.fk_id_article
 
 INNER JOIN tbl_age_group ag
     ON aag.fk_id_age_group = ag.id_age_group;
+    
+    SELECT * FROM vw_article_by_age_group ORDER BY fk_id_age_group;
