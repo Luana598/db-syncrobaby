@@ -1,5 +1,5 @@
 CREATE DATABASE db_syncrobaby;
- -- DROP DATABASE db_syncrobaby;
+  -- DROP DATABASE db_syncrobaby;
 USE db_syncrobaby;
 
 
@@ -42,7 +42,8 @@ CREATE TABLE tbl_notification (
     id_notification INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     message VARCHAR(255) NOT NULL,
-    date_time DATETIME,
+    date_time DATETIME DEFAULT (CURDATE()),
+    read_status BOOLEAN DEFAULT FALSE,
     fk_id_child INT,
     fk_id_guardian INT,
     fk_id_notification_type INT
@@ -95,7 +96,7 @@ CREATE TABLE tbl_measurement_history (
     bmi DECIMAL(4,2),
     head_circumference DECIMAL(5,2),
     description VARCHAR(255),
-    update_date DATE NOT NULL,
+    update_date DATE NOT NULL DEFAULT (CURDATE()),
     fk_id_child INT
 );
  
@@ -395,7 +396,7 @@ CREATE TABLE tbl_child_vaccine (
     fk_id_child INT,
     fk_id_vaccine INT,
     application_status BOOLEAN DEFAULT FALSE,
-    application_date DATE
+    application_date DATE 
 );
  
 ALTER TABLE tbl_child_vaccine ADD CONSTRAINT FK_child_vaccine_1

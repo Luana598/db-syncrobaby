@@ -70,6 +70,8 @@ END $$
 
 DELIMITER ;
 
+-- procedure de decremento da quantidade em estoque
+
 DELIMITER $$
 
 CREATE PROCEDURE sp_update_stock (
@@ -161,4 +163,37 @@ BEGIN
    );
 
 END $$
+DELIMITER ;
+
+
+-- relacionar vacinas com criança  
+DELIMITER $$
+
+CREATE TRIGGER trg_insert_vaccine_per_child
+AFTER INSERT ON tbl_child
+FOR EACH ROW
+BEGIN
+
+ INSERT INTO tbl_child_vaccine ( fk_id_child, fk_id_vaccine )
+ SELECT NEW.id_child, id_vaccine 
+ FROM tbl_vaccine;
+
+END $$
+
+DELIMITER ;
+
+-- relacionar artigos com criança  
+DELIMITER $$
+
+CREATE TRIGGER trg_insert_article_per_child
+AFTER INSERT ON tbl_child
+FOR EACH ROW
+BEGIN
+
+ INSERT INTO tbl_child_article ( fk_id_child, fk_id_article)
+ SELECT NEW.id_child, id_article
+ FROM tbl_article;
+
+END $$
+
 DELIMITER ;
