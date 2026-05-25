@@ -128,10 +128,11 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Massageador de gengiva', 5, 5), -- un
 ('Aspirador nasal', 5, 5), -- un
 ('Tesoura de unha infantil', 5, 5), -- un
-('Escova de cabelo infantil', 5, 5), -- un
+('Escova de cabelo infantil', 5, 5); -- un
 
 -- ALIMENTAÇÃO (ALIMENTO SÓLIDO)
 -- Tipo: Alimentação (Alimento sólido) (1)
+INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 
 ('Abacate', 3, 1), -- g
 ('Banana', 3, 1),

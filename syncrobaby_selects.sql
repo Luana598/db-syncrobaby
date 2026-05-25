@@ -127,6 +127,7 @@ SELECT sr.id_stock_registry as id,
 p.product_name,
 sr.description,
 pt.product_type_name as type,
+ u.unit_initials as measure,
 sr.quantity,
 sr.volume,
 sr.fk_id_child as id_child,
@@ -136,7 +137,9 @@ FROM tbl_stock_registry sr
 INNER JOIN tbl_product p
 ON sr.fk_id_product = p.id_product
 INNER JOIN tbl_product_type pt
-ON p.fk_id_product_type = pt.id_product_type;
+ON p.fk_id_product_type = pt.id_product_type
+INNER JOIN tbl_unit u
+ON u.id_unit = p.fk_id_unit;
 
 select * from vw_stock_type;
 
@@ -178,3 +181,5 @@ INNER JOIN tbl_age_group ag
     ON aag.fk_id_age_group = ag.id_age_group;
     
     SELECT * FROM vw_article_by_age_group ORDER BY fk_id_age_group;
+    
+    
