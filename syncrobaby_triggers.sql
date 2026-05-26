@@ -199,11 +199,14 @@ END $$
 DELIMITER ;
 
 -- evento de inserção de notificação
+SET GLOBAL event_scheduler = ON;
+  
+SHOW VARIABLES LIKE 'event_scheduler';
 
 DELIMITER $$
 
-CREATE EVENT ev_check_vaccine_age_group
-ON SCHEDULE EVERY 1 DAY
+CREATE EVENT ev_notify_vaccine_age_group
+ON SCHEDULE EVERY 1 MINUTE
 DO
 BEGIN
 
@@ -214,39 +217,65 @@ BEGIN
         fk_id_guardian,
         fk_id_notification_type
     )
+
     SELECT
-        'Nova vacina disponível',
+        'Vacina disponível',
+
         CONCAT(
             c.child_name,
             ' entrou na faixa etária da vacina ',
-            v.vaccine_name
+            v.vaccine_name,
+            '.'
         ),
+
         c.id_child,
         c.fk_id_guardian,
         1
+
     FROM tbl_child c
-    INNER JOIN tbl_vaccine_child vc
-        ON c.id_child = vc.kf_id_child
-	INNER JOIN tbl_vaccine v
-    ON vc.fk_id_vaccine = v.id_vaccine
+
+    INNER JOIN tbl_child_vaccine cv
+        ON cv.fk_id_child = c.id_child
+
+    INNER JOIN tbl_vaccine v
+        ON v.id_vaccine = cv.fk_id_vaccine
+
     INNER JOIN tbl_vaccine_in_age_group vag
         ON vag.fk_id_vaccine = v.id_vaccine
-	INNER JOIN tbl_age_group ag
-        ON TIMESTAMPDIFF(MONTH, c.birth_date, CURDATE())
-        BETWEEN ag.min_months AND ag.max_months
-        
-         WHERE NOT EXISTS (
+
+    INNER JOIN tbl_age_group ag
+        ON ag.id_age_group = vag.fk_id_age_group
+
+    WHERE TIMESTAMPDIFF(
+        MONTH,
+        c.birth_date,
+        CURDATE()
+    )
+    BETWEEN ag.min_months AND ag.max_months
+
+    AND NOT EXISTS (
+
         SELECT 1
-        FROM tbl_child_vaccine_notification cvn
-        WHERE cvn.fk_id_child = c.id_child
-        AND cvn.fk_id_vaccine = v.id_vaccine
+        FROM tbl_notification n
+
+        WHERE n.fk_id_child = c.id_child
+
+        AND n.message = CONCAT(
+            c.child_name,
+            ' entrou na faixa etária da vacina ',
+            v.vaccine_name,
+            '.'
+        )
     );
-    
+
 END $$
 
 DELIMITER ;
 
 
-        
+
 select * from tbl_notification;
-  
+
+delete from tbl_notification where id_notification > 3;
+
+drop event ev_notify_vaccine_age_group;

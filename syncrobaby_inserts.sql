@@ -352,71 +352,74 @@ INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES
 ('Primeira Infância - Fase 2', 25, 36),
 ('Pré-Escolar', 37, 72);
 
-INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
-('2 meses', 2, 3),
-('3 meses', 3, 4),
-('4 meses', 4, 5),
-('5 meses', 5, 6),
-('6 meses', 6, 7),
-('6 a 8 meses', 6, 8),
-('7 meses', 7, 8),
-('9 meses', 9, 10), 
-('12 meses', 12, 14),
-('15 meses', 15, 16),
-('4 anos - 48 meses', 48, 49),
-('5 anos - 60 meses', 60, 61);
+INSERT INTO tbl_age_group ( age_group_name, min_months, max_months) VALUES
+('2 meses', 2, 2),
+('3 meses', 3, 3),
+('4 meses', 4, 4),
+('5 meses', 5, 5),
+('6 meses', 6, 6),
+('7 meses', 7, 7),
+('9 meses', 9, 9),
+('12 meses', 12, 12),
+('15 meses', 15, 15),
+('4 anos', 48, 48),
+('5 anos', 60, 60);
 
 -- VACCINE IN AGE GROUP
 INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
-	-- 1. Recém-nascido (Imediato) | 0-1 mês
+-- 0-1 mês
 
-(1, 1), -- Vacina BCG
-(1, 2), -- Vacina Hepatite B
+(1, 1), 
+(1, 2), 
 
-	-- 2. Bebê - 1º Semestre | 2-6 meses
+-- 2 meses
+(7, 3),
+(7, 4),
+(7, 5),
+(7, 6),
 
-(2, 3),  -- Vacina penta (1ª dose)
-(2, 4),  -- VIP (1ª dose)
-(2, 5),  -- Pneumocócica (1ª dose)
-(2, 6),  -- Rotavírus (1ª dose)
-(2, 7),  -- Meningocócica C (1ª dose)
+-- 3 meses
+(8, 7),
 
-(2, 8),  -- Vacina penta (2ª dose)
-(2, 9),  -- VIP (2ª dose)
-(2, 10), -- Pneumocócica (2ª dose)
-(2, 11), -- Rotavírus (2ª dose)
+-- 4 meses
+(9, 8),
+(9, 9),
+(9, 10),
+(9, 11),
 
-(2, 12), -- Meningocócica C (2ª dose)
+-- 5 meses
+(10, 12),
 
-(2, 13), -- Vacina penta (3ª dose)
-(2, 14), -- VIP (3ª dose)
-(2, 15), -- Influenza
-(2, 16), -- Covid-19 (1ª dose)
+-- 6 meses
+(11, 13),
+(11, 14),
+(11, 15),
+(11, 16),
+(11, 17),
 
-(2, 17), -- Febre amarela excepcional (6-8 meses)
+-- 7 meses
+(12, 18),
 
-	-- 3. Bebê - 2º Semestre | 7-12 meses
+-- 9 meses
+(13, 19),
+(13, 20),
 
-(3, 18), -- Covid-19 (2ª dose)
-(3, 19), -- Covid-19 (3ª dose)
-(3, 20), -- Febre amarela (9 meses)
+-- 12 meses
+(14, 21),
+(14, 22),
+(14, 23),
 
-(3, 21), -- Pneumocócica reforço
-(3, 22), -- Meningocócica ACWY
-(3, 23), -- Tríplice viral SCR
+-- 15 meses
+(15, 24),
+(15, 25),
+(15, 26),
+(15, 27),
+(15, 28),
 
-	-- 4. Primeira Infância - Fase 1 | 13-24 meses
+-- 4 anos
+(16, 29),
+(16, 30),
+(16, 31),
 
-(4, 24), -- DTP reforço
-(4, 25), 
-(4, 26),
-(4, 27), 
-(4, 28), 
-
-	-- 6. Pré-Escolar | 37-72 meses
-
-(6, 29), -- DTP 2º reforço
-(6, 30), -- Febre amarela reforço
-(6, 31), -- Varicela reforço
-(6, 32); -- Pneumocócica 23-valente
-
+-- 5 anos
+(17, 32);
