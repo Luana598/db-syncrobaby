@@ -7,6 +7,7 @@ BEGIN
 
     DECLARE last_weight DECIMAL(5,2);
     DECLARE last_height DECIMAL(5,2);
+    DECLARE last_head_circumference DECIMAL(5,2);
 
 
     SELECT weight
@@ -24,6 +25,18 @@ BEGIN
       AND height IS NOT NULL
     ORDER BY update_date DESC, id_history DESC
     LIMIT 1;
+    
+    SELECT head_circumference
+    INTO last_head_circumference
+    FROM tbl_measurement_history
+    WHERE fk_id_child = NEW.fk_id_child
+      AND head_circumference IS NOT NULL
+    ORDER BY update_date DESC, id_history DESC
+    LIMIT 1;
+    
+    IF NEW.head_circumference IS NULL THEN
+        SET NEW.head_circumference = last_head_circumference;
+    END IF;
 
     IF NEW.weight IS NULL THEN
         SET NEW.weight = last_weight;
@@ -51,6 +64,8 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+-- atualizar perfil da criança após inserção de medidas
 
 DELIMITER $$
 

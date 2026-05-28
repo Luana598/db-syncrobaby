@@ -146,9 +146,11 @@ select * from vw_stock_type;
 -- VIEW de notificacao com tipo
  CREATE VIEW vw_notification_type AS
 
-SELECT n.title, 
+SELECT n.id_notification,
+n.title, 
 n.message,
 n.date_time, 
+n.read_status,
 n.fk_id_child, 
 n.fk_id_guardian, 
 n.fk_id_notification_type,
@@ -181,5 +183,4 @@ INNER JOIN tbl_age_group ag
     ON aag.fk_id_age_group = ag.id_age_group;
     
     SELECT * FROM vw_article_by_age_group ORDER BY fk_id_age_group;
-    
     
