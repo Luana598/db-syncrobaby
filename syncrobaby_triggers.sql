@@ -5,66 +5,64 @@ BEFORE INSERT ON tbl_measurement_history
 FOR EACH ROW
 BEGIN
 
-    DECLARE last_weight DECIMAL(5,2);
-    DECLARE last_height DECIMAL(5,2);
-    DECLARE last_head_circumference DECIMAL(5,2);
+DECLARE last_weight DECIMAL(5,2);
+DECLARE last_height DECIMAL(5,2);
+DECLARE last_head_circumference DECIMAL(5,2);
 
+SELECT weight
+INTO last_weight
+FROM tbl_measurement_history
+WHERE fk_id_child = NEW.fk_id_child
+  AND weight IS NOT NULL
+ORDER BY update_date DESC, id_history DESC
+LIMIT 1;
 
-    SELECT weight
-    INTO last_weight
-    FROM tbl_measurement_history
-    WHERE fk_id_child = NEW.fk_id_child
-      AND weight IS NOT NULL
-    ORDER BY update_date DESC, id_history DESC
-    LIMIT 1;
+SELECT height
+INTO last_height
+FROM tbl_measurement_history
+WHERE fk_id_child = NEW.fk_id_child
+  AND height IS NOT NULL
+ORDER BY update_date DESC, id_history DESC
+LIMIT 1;
 
-    SELECT height
-    INTO last_height
-    FROM tbl_measurement_history
-    WHERE fk_id_child = NEW.fk_id_child
-      AND height IS NOT NULL
-    ORDER BY update_date DESC, id_history DESC
-    LIMIT 1;
-    
-    SELECT head_circumference
-    INTO last_head_circumference
-    FROM tbl_measurement_history
-    WHERE fk_id_child = NEW.fk_id_child
-      AND head_circumference IS NOT NULL
-    ORDER BY update_date DESC, id_history DESC
-    LIMIT 1;
-    
-    IF NEW.head_circumference IS NULL THEN
-        SET NEW.head_circumference = last_head_circumference;
-    END IF;
+SELECT head_circumference
+INTO last_head_circumference
+FROM tbl_measurement_history
+WHERE fk_id_child = NEW.fk_id_child
+  AND head_circumference IS NOT NULL
+ORDER BY update_date DESC, id_history DESC
+LIMIT 1;
 
-    IF NEW.weight IS NULL THEN
-        SET NEW.weight = last_weight;
-    END IF;
+IF NEW.head_circumference IS NULL THEN
+    SET NEW.head_circumference = last_head_circumference;
+END IF;
 
-    IF NEW.height IS NULL THEN
-        SET NEW.height = last_height;
-    END IF;
+IF NEW.weight IS NULL THEN
+    SET NEW.weight = last_weight;
+END IF;
 
-    IF NEW.weight IS NOT NULL
-       AND NEW.height IS NOT NULL
-       AND NEW.height > 0 THEN
+IF NEW.height IS NULL THEN
+    SET NEW.height = last_height;
+END IF;
 
-        SET NEW.bmi = ROUND(
-            NEW.weight / ((NEW.height / 100) * (NEW.height / 100)),
-            2
-        );
+IF NEW.weight IS NOT NULL
+   AND NEW.height IS NOT NULL
+   AND NEW.height > 0 THEN
 
-    ELSE
+    SET NEW.bmi = ROUND(
+        NEW.weight / ((NEW.height / 100) * (NEW.height / 100)),
+        2
+    );
 
-        SET NEW.bmi = NULL;
+ELSE
 
-    END IF;
+    SET NEW.bmi = NULL;
+
+END IF;
 
 END $$
 
 DELIMITER ;
-
 -- atualizar perfil da criança após inserção de medidas
 
 DELIMITER $$
@@ -213,55 +211,5 @@ END $$
 
 DELIMITER ;
 
--- evento de inserção de notificação
-
-DELIMITER $$
-
-CREATE EVENT ev_check_vaccine_age_group
-ON SCHEDULE EVERY 1 DAY
-DO
-BEGIN
-
-    INSERT INTO tbl_notification (
-        title,
-        message,
-        fk_id_child,
-        fk_id_guardian,
-        fk_id_notification_type
-    )
-    SELECT
-        'Nova vacina disponível',
-        CONCAT(
-            c.child_name,
-            ' entrou na faixa etária da vacina ',
-            v.vaccine_name
-        ),
-        c.id_child,
-        c.fk_id_guardian,
-        1
-    FROM tbl_child c
-    INNER JOIN tbl_vaccine_child vc
-        ON c.id_child = vc.kf_id_child
-	INNER JOIN tbl_vaccine v
-    ON vc.fk_id_vaccine = v.id_vaccine
-    INNER JOIN tbl_vaccine_in_age_group vag
-        ON vag.fk_id_vaccine = v.id_vaccine
-	INNER JOIN tbl_age_group ag
-        ON TIMESTAMPDIFF(MONTH, c.birth_date, CURDATE())
-        BETWEEN ag.min_months AND ag.max_months
-        
-         WHERE NOT EXISTS (
-        SELECT 1
-        FROM tbl_child_vaccine_notification cvn
-        WHERE cvn.fk_id_child = c.id_child
-        AND cvn.fk_id_vaccine = v.id_vaccine
-    );
-    
-END $$
-
-DELIMITER ;
 
 
-        
-select * from tbl_notification;
-  

@@ -42,7 +42,7 @@ CREATE TABLE tbl_notification (
     id_notification INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150) NOT NULL,
     message VARCHAR(255) NOT NULL,
-    date_time DATETIME DEFAULT (CURDATE()),
+    date_time DATETIME DEFAULT (NOW()),
     read_status BOOLEAN DEFAULT FALSE,
     fk_id_child INT,
     fk_id_guardian INT,
