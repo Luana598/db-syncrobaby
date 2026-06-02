@@ -347,12 +347,12 @@ VALUES
 
 
 INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
-('Recém nascido', 0, 1), 
-('Bebê - 1º Semestre', 2, 6),
-('Bebê - 2º Semestre', 7, 12),
-('Primeira Infância - Fase 1', 13, 24),
-('Primeira Infância - Fase 2', 25, 36),
-('Pré-Escolar', 37, 72);
+('0 a 1 mês', 0, 1), 
+('2 a 6 meses', 2, 6),
+('7 a 12 meses', 7, 12),
+('1 a 2 anos', 13, 24),
+('2 a 3 anos', 25, 36),
+('3 a 6 anos', 37, 72);
 
 INSERT INTO tbl_age_group ( age_group_name, min_months, max_months) VALUES
 ('2 meses', 2, 2),
@@ -367,6 +367,7 @@ INSERT INTO tbl_age_group ( age_group_name, min_months, max_months) VALUES
 ('4 anos', 48, 48),
 ('5 anos', 60, 60);
 
+select * from tbl_age_group;
 -- VACCINE IN AGE GROUP
 INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 -- 0-1 mês

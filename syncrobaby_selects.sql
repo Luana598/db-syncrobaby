@@ -167,7 +167,6 @@ CREATE VIEW vw_article_by_age_group AS
 
 SELECT a.id_article, 
 a.title,
-a.content,
 a.publication_date,
 a.author,
 a.media,
@@ -183,5 +182,3 @@ INNER JOIN tbl_age_group ag
     ON aag.fk_id_age_group = ag.id_age_group;
     
     SELECT * FROM vw_article_by_age_group ORDER BY fk_id_age_group;
-
-    
