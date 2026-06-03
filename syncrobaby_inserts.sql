@@ -426,4 +426,3 @@ INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 
 -- 5 anos
 (17, 32);
-

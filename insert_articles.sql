@@ -1,3 +1,5 @@
+USE db_syncrobaby;
+
 INSERT INTO tbl_article(title, description, content, publication_date, author, media, source_link)VALUES
 -- recém nascido
 ('Desenvolvimento infantil', 
@@ -246,3 +248,4 @@ INSERT INTO tbl_article_in_age_group (fk_id_age_group, fk_id_article) VALUES
 (6, 17), 
 (6, 18), 
 (6, 19);
+

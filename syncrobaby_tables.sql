@@ -48,6 +48,8 @@ CREATE TABLE tbl_notification (
     fk_id_guardian INT,
     fk_id_notification_type INT
 );
+
+ALTER TABLE tbl_notification ADD COLUMN active BOOLEAN DEFAULT TRUE;
  
 ALTER TABLE tbl_notification ADD CONSTRAINT FK_notification_child
     FOREIGN KEY (fk_id_child)

@@ -4,10 +4,12 @@ SET GLOBAL event_scheduler = ON;
   
 SHOW VARIABLES LIKE 'event_scheduler';
 
+drop event ev_notify_birthday;
+
 DELIMITER $$
 
 CREATE EVENT ev_notify_vaccine
-ON SCHEDULE EVERY 1 DAY
+ON SCHEDULE EVERY 5 minute
 DO
 BEGIN
 
@@ -81,7 +83,7 @@ DELIMITER ;
 DELIMITER $$
 
 CREATE EVENT ev_notify_birthday
-ON SCHEDULE EVERY 1 minute
+ON SCHEDULE EVERY 5 minute
 DO
 BEGIN
 
