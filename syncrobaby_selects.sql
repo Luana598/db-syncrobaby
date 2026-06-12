@@ -28,10 +28,6 @@ LEFT JOIN tbl_child_vaccine cv
 
 LEFT JOIN tbl_child c
     ON cv.fk_id_child = c.id_child;
-    
-    
-    SELECT * FROM vw_vaccination_status where id_child = 1;
-    
 
 -- 2. VIEW para linha temporal do dia - rotinas
 
@@ -117,8 +113,6 @@ INNER JOIN tbl_product_type pt
     ON pt.id_product_type = p.fk_id_product_type
 INNER JOIN tbl_unit u
     ON u.id_unit = p.fk_id_unit;
-    
-    select * from vw_product_info where id = 1;
 
 -- VIEW de registro em estoque por tipo de produto
  CREATE VIEW vw_stock_type AS
@@ -141,8 +135,6 @@ ON p.fk_id_product_type = pt.id_product_type
 INNER JOIN tbl_unit u
 ON u.id_unit = p.fk_id_unit;
 
-select * from vw_stock_type;
-
 -- VIEW de notificacao com tipo
  CREATE VIEW vw_notification_type AS
 
@@ -158,8 +150,6 @@ nt.notification_type_name
 FROM tbl_notification n 
 INNER JOIN tbl_notification_type nt
 ON n.fk_id_notification_type = nt.id_notification_type;
-
-SELECT * FROM vw_notification_type;
 
 -- VIEW de artigo com faixa etária
 
@@ -181,4 +171,3 @@ ON a.id_article = aag.fk_id_article
 INNER JOIN tbl_age_group ag
     ON aag.fk_id_age_group = ag.id_age_group;
     
-    SELECT * FROM vw_article_by_age_group ORDER BY fk_id_age_group;

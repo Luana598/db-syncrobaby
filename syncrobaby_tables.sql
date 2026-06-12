@@ -1,7 +1,6 @@
 CREATE DATABASE db_syncrobaby;
--- DROP DATABASE db_syncrobaby;
-USE db_syncrobaby;
 
+USE db_syncrobaby;
 
 CREATE TABLE tbl_guardian (
     id_guardian INT AUTO_INCREMENT PRIMARY KEY,

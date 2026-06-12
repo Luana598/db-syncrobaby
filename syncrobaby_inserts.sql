@@ -59,29 +59,6 @@ INSERT INTO tbl_vaccine (vaccine_name, observation, prevented_diseases, dose) VA
 -- 5 anos
 ('Vacina pneumocócica 23-valente', 'Obs.: Sem histórico vacinal com pneumo conjugada. Uma segunda dose deve ser administrada com intervalo de 5 anos após a 1ª dose.', 'Doenças pneumocócicas invasivas pelos sorogrupos contidos na vacina', '1 dose');
 
-
-INSERT INTO tbl_guardian (guardian_name, email, password, profile_picture) VALUES 
-('Ana Souza', 'ana.souza@email.com', 'senha123', 'perfil_ana.jpg'),
-('Carlos Lima', 'carlos.lima@email.com', 'carlos456', 'perfil_carlos.jpg'),
-('Mariana Silva', 'mari.silva@email.com', 'mari789', NULL);
-
-
-INSERT INTO tbl_child (child_name, height, weight, birth_date, BMI, blood_type, gender, fk_id_guardian) VALUES 
-('Alice Souza', 52.0, 3.50, '2023-05-10', 12.9, 'O+', 'female', 1),
-('Bento Lima', 60.0, 5.80, '2023-01-15', 16.1, 'A-', 'male', 2),
-('Clara Silva', 48.0, 2.90, '2024-02-01', 12.5, 'AB+', 'female', 3);
-
-INSERT INTO tbl_measurement_history (weight, height, head_circumference, update_date, fk_id_child) VALUES 
-(3.50, 52.0, 34.5, '2023-05-10', 1),
-(4.20, null, 35.2, '2023-06-10', 1),
-(5.80, 60.0, 38.0, '2023-01-15', 2);
-
-INSERT INTO tbl_illness (illness_name, start_date, end_date, illness_type, medication, fk_id_child) VALUES 
-('Resfriado Comum', '2024-03-10', '2024-03-15', 'acute', 'Paracetamol', 1),
-('Refluxo', '2023-02-01', NULL, 'chronic', 'Domperidona', 2),
-('Gripe', '2024-04-20', '2024-04-25', 'acute', 'Ibuprofeno', 3);
-
-
 INSERT INTO tbl_specialization (specialization_name) VALUES 
 ('pediatria'),
 ('nutrição infantil'),
@@ -94,21 +71,10 @@ INSERT INTO tbl_specialization (specialization_name) VALUES
 ('oftalmopediatria'),
 ('odontopediatria');
 
-
-INSERT INTO tbl_professional (professional_name, phone, last_consultation, address, fk_id_child, fk_id_specialization) VALUES 
-('Dr. Marcos Pollo', '11988887777', '2024-04-01', 'Rua das Flores, 123', 1, 1),
-('Dra. Helena Rio', '11977776666', '2024-03-15', 'Av. Central, 456', 2, 2),
-('Dr. Fábio Silva', '11966665555', '2024-04-20', 'Rua Azul, 789', 3, 3);
-
 INSERT INTO tbl_notification_type (notification_type_name) VALUES 
 ('vacinacao'),
 ('estoque'),
 ('aniversario');
-
-INSERT INTO tbl_notification (title, message, date_time, fk_id_child, fk_id_guardian, fk_id_notification_type) VALUES 
-('Hora da Vacina', 'Levar Alice para tomar a BCG', '2024-05-10 09:00:00', 1, 1, 1),
-('Alerta de estoque', 'As fraldas do Bento estão esgotando', '2024-05-10 10:30:00', 2, 2, 2),
-('Feliz aniversário!', 'Clara faz aniversário hoje!', '2024-05-10 12:00:00', 3, 3, 3);
 
 INSERT INTO tbl_unit (unit_initials) VALUES     
 ('l'), 
@@ -282,70 +248,6 @@ INSERT INTO tbl_product (product_name, fk_id_unit, fk_id_product_type) VALUES
 ('Papinha infantil', 3, 3), -- g
 ('Purê infantil', 3, 3); -- g
 
-select * from tbl_product;
-
-INSERT INTO tbl_stock_registry (description, quantity, volume, fk_id_child, fk_id_product) VALUES 
-('Pacote Fechado', 1, 40, 1, 1),
-('Lata de Leite', 1, 1, 2, 121),
-('Sabonete hipoalergênico', 2, 100, 3, 17),
-('Shampoo uso diário', 1, 200, 1, 5),
-('Medicamento para febre', 1, 100, 2, 19),
-('Bananas maduras para alimentação', 6, 1200, 1, 53),
-('Mamadeira reserva', 2, 250, 3, 40),
-('Lata aberta em uso', 1, 800, 2, 94);
-
-INSERT INTO tbl_diary_note (title, content, date, color, fk_id_child) VALUES 
-('Primeiro Sorriso', 'Hoje a Alice sorriu pela primeira vez!', '2023-06-15', '#FFC0CB', 1),
-('Engatinhou', 'Bento percorreu a sala inteira', '2023-09-10', '#ADD8E6', 2),
-('Primeiro Banho', 'Clara adorou a água morna', '2024-02-02', '#FFFFE0', 3);
-
-INSERT INTO tbl_sleep_log (start_time, end_time, fk_id_child) VALUES
-('2024-05-09 20:00:00', '2024-05-10 06:00:00', 1),
-('2024-05-10 13:00:00', '2024-05-10 15:00:00', 2),
-('2024-05-09 21:30:00', '2024-05-10 07:30:00', 3);
-
-INSERT INTO tbl_bath_log (start_time, end_time, fk_id_child) VALUES 
-('2024-05-10 18:00:00', '2024-05-10 18:15:00', 1),
-('2024-05-10 10:00:00', '2024-05-10 10:10:00', 2),
-('2024-05-10 19:30:00', '2024-05-10 19:50:00', 3);
-
-INSERT INTO tbl_diaper_log (date_time, type, fk_id_child) VALUES 
-('2024-05-10 08:00:00', 'urine', 1),
-('2024-05-10 09:30:00', 'stool', 2),
-('2024-05-10 11:00:00', 'urine', 3);
-
-INSERT INTO tbl_medication_log (date_time, description, fk_id_child) VALUES 
-('2024-05-10 08:00:00', 'Administração de Paracetamol para febre leve.', 1),
-('2024-05-10 12:00:00', 'Vitamina D (suplementação diária).', 2),
-('2024-05-10 20:00:00', 'Antibiótico conforme prescrição médica.', 3);
-
-INSERT INTO tbl_feeding_log (date_time, description, fk_id_child, fk_id_product_type) VALUES 
-('2024-05-10 07:00:00', 'Amamentação no peito (lado esquerdo).', 1, 2),
-('2024-05-10 12:30:00', 'Papinha de legumes com frango.', 2, 3),
-('2024-05-10 15:00:00', 'Fórmula infantil - 150ml.', 3, 2);
-
-
-INSERT INTO tbl_stock_feeding 
-(fk_id_feeding, fk_id_stock_registry, quantity) 
-VALUES 
-(3, 8, 1);
-
-INSERT INTO tbl_stock_bath 
-(fk_id_bath, fk_id_stock_registry, quantity) 
-VALUES 
-(1, 4, 1);
-
-INSERT INTO tbl_stock_medication 
-(fk_id_medication, fk_id_stock_registry, dosage) 
-VALUES 
-(1, 5, 1);
-
-INSERT INTO tbl_stock_diaper 
-(fk_id_diaper, fk_id_stock_registry, quantity) 
-VALUES 
-(1, 1, 1);
-
-
 INSERT INTO tbl_age_group (age_group_name, min_months, max_months) VALUES 
 ('0 a 1 mês', 0, 1), 
 ('2 a 6 meses', 2, 6),
@@ -367,7 +269,6 @@ INSERT INTO tbl_age_group ( age_group_name, min_months, max_months) VALUES
 ('4 anos', 48, 48),
 ('5 anos', 60, 60);
 
-select * from tbl_age_group;
 -- VACCINE IN AGE GROUP
 INSERT INTO tbl_vaccine_in_age_group (fk_id_age_group, fk_id_vaccine) VALUES
 -- 0-1 mês
